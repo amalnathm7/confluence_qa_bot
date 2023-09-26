@@ -7,10 +7,10 @@ from langchain.text_splitter import TokenTextSplitter
 
 load_dotenv()
 
-confluence_username = os.getenv("CONFLUENCE_USERNAME")
-confluence_api_key = os.getenv("CONFLUENCE_API_KEY")
-confluence_url = os.getenv("CONFLUENCE_URL")
-confluence_space_key = os.getenv("CONFLUENCE_SPACE_KEY")
+confluence_username = os.environ.get("CONFLUENCE_USERNAME")
+confluence_api_key = os.environ.get("CONFLUENCE_API_KEY")
+confluence_url = os.environ.get("CONFLUENCE_URL")
+confluence_space_key = os.environ.get("CONFLUENCE_SPACE_KEY")
 
 
 def extract_documents():

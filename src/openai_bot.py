@@ -9,7 +9,7 @@ from chroma_db import get_retriever
 
 load_dotenv()
 
-OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
 LLM_OPENAI_GPT35 = 'gpt-3.5-turbo'
 CUSTOM_PROMPT_TEMPLATE = """You are a Confluence chatbot answering questions.
 Use the following pieces of context to answer the question at the end.
