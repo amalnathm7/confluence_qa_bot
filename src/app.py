@@ -13,6 +13,13 @@ st.title("Confluence Q&A")
 
 question = st.text_input('Ask a question', "Hi, who are you?")
 
-if st.button('Get Answer'):
-    answer = confluence_qa_bot.run(question)
+get_answer_button = st.button('Get Answer', key="get_answer_button")
+
+if get_answer_button:
+    with st.spinner("Running..."):
+        answer = confluence_qa_bot.run(question)
+
+    st.success('Done!')
     st.write(answer)
+else:
+    st.text("Click 'Get Answer' to retrieve the answer")
