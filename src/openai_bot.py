@@ -12,16 +12,15 @@ load_dotenv()
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
 LLM_OPENAI_GPT35 = 'gpt-3.5-turbo'
 CUSTOM_PROMPT_TEMPLATE = """
-You are a Confluence chatbot providing answers only based on the context given below in <>.
+You are a Confluence chatbot providing answers only based on the context.
 Say that you don't know even if you know the answer but it is not given in the context or if the context is empty.
 
-Context:
-<{context}>
+{context}
 
 Question:
 {question}
 
-Purely contex-based answer:
+Answer:
 """
 
 

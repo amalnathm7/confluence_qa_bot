@@ -22,7 +22,8 @@ def extract_documents():
 
     documents = loader.load(
         space_key=confluence_space_key,
-        limit=100
+        limit=100,
+        max_pages=100
     )
 
     text_splitter = TokenTextSplitter(
