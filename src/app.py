@@ -2,31 +2,37 @@
 import streamlit as st
 from openai_bot import bot
 
-st.set_page_config(
-    page_title='Q&A Bot for Confluence',
-    page_icon='⚡',
-)
 
-confluence_qa_bot = bot()
+def run_streamlit_ui():
+    """Function to run the website"""
+    st.set_page_config(
+        page_title='Q&A Bot for Confluence',
+        page_icon='⚡',
+    )
 
-st.title("Confluence Q&A")
+    confluence_qa_bot = bot()
 
-question = st.text_input('Ask a question', "Hi, who are you?")
+    st.title("Confluence Q&A")
 
-BUTTON_RUNNING = False
+    question = st.text_input('Ask a question', "Hi, who are you?")
 
-get_answer_button = st.button('Get Answer')
+    button_running = False
 
-if get_answer_button:
-    with st.spinner("Running..."):
-        answer = confluence_qa_bot.run(question)
+    get_answer_button = st.button('Get Answer')
 
-    BUTTON_RUNNING = False
+    if get_answer_button:
+        with st.spinner("Running..."):
+            answer = confluence_qa_bot.run(question)
 
-    st.success('Done!')
-    st.write(answer)
-else:
-    if not BUTTON_RUNNING:
-        st.text("Click 'Get Answer' to retrieve the answer")
+        button_running = False
+
+        st.success(answer)
     else:
-        st.button('Get Answer', key="get_answer_button", disabled=True)
+        if not button_running:
+            st.text("Click 'Get Answer' to retrieve the answer")
+        else:
+            st.button('Get Answer', key="get_answer_button", disabled=True)
+
+
+if __name__ == "__main__":
+    run_streamlit_ui()

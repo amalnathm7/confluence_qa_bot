@@ -11,12 +11,18 @@ load_dotenv()
 
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
 LLM_OPENAI_GPT35 = 'gpt-3.5-turbo'
-CUSTOM_PROMPT_TEMPLATE = """You are a Confluence chatbot answering questions.
-Use the following pieces of context to answer the question at the end.
-If you don't know the answer, say that you don't know, don't try to make up an answer.
-{context}
-Question: {question}
-Helpful Answer:"""
+CUSTOM_PROMPT_TEMPLATE = """
+You are a Confluence chatbot providing answers only based on the context given below in <>.
+Say that you don't know even if you know the answer but it is not given in the context or if the context is empty.
+
+Context:
+<{context}>
+
+Question:
+{question}
+
+Purely contex-based answer:
+"""
 
 
 def bot():
@@ -26,7 +32,7 @@ def bot():
             "context", "question"]
     )
 
-    llm = ChatOpenAI(model_name=LLM_OPENAI_GPT35, temperature=0.)
+    llm = ChatOpenAI(model_name=LLM_OPENAI_GPT35, temperature=0)
 
     retriever = get_retriever(k=4)
 

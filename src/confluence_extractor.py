@@ -2,7 +2,6 @@
 import os
 from dotenv import load_dotenv
 from langchain.document_loaders import ConfluenceLoader
-from langchain.text_splitter import CharacterTextSplitter
 from langchain.text_splitter import TokenTextSplitter
 
 load_dotenv()
@@ -26,10 +25,8 @@ def extract_documents():
         limit=100
     )
 
-    text_splitter = CharacterTextSplitter(chunk_size=100, chunk_overlap=0)
-    texts = text_splitter.split_documents(documents)
     text_splitter = TokenTextSplitter(
         chunk_size=1000, chunk_overlap=10, encoding_name="cl100k_base")
-    texts = text_splitter.split_documents(texts)
+    texts = text_splitter.split_documents(documents)
 
     return texts
