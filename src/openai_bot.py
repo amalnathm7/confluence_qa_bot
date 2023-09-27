@@ -33,7 +33,7 @@ def bot():
 
     llm = ChatOpenAI(model_name=LLM_OPENAI_GPT35, temperature=0)
 
-    retriever = get_retriever(k=10)
+    retriever = get_retriever(k=4)
 
     chain_type_kwargs = {"prompt": custom_prompt}
 
