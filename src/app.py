@@ -14,7 +14,7 @@ def run_streamlit_ui():
 
     st.title("KeyValue Confluence Q&A")
 
-    question = st.text_input('Ask a question', "Hi, who are you?")
+    question = st.text_input('Ask a question', "Tell me about KeyValue.")
 
     button_running = False
 
