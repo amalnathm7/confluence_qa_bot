@@ -12,7 +12,7 @@ def run_streamlit_ui():
 
     confluence_qa_bot = bot()
 
-    st.title("Confluence Q&A")
+    st.title("KeyValue Confluence Q&A")
 
     question = st.text_input('Ask a question', "Hi, who are you?")
 
